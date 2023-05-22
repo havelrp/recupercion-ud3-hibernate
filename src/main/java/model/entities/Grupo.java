@@ -17,14 +17,14 @@ public class Grupo {
     private int id_grupo;
     private String nombre_grupo;
     private String descripcion;
-    private String miembros;
+    private int miembros;
     @ManyToMany(mappedBy = "grupos")
     private Set<Usuario> usuarios = new HashSet<>();
 
     public Grupo() {
     }
 
-    public Grupo(int id_grupo, String nombre_grupo, String descripcion, String miembros) {
+    public Grupo(int id_grupo, String nombre_grupo, String descripcion, int miembros) {
         this.id_grupo = id_grupo;
         this.nombre_grupo = nombre_grupo;
         this.descripcion = descripcion;
@@ -55,11 +55,11 @@ public class Grupo {
         this.descripcion = descripcion;
     }
 
-    public String getMiembros() {
+    public int getMiembros() {
         return miembros;
     }
 
-    public void setMiembros(String miembros) {
+    public void setMiembros(int miembros) {
         this.miembros = miembros;
     }
 

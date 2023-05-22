@@ -1,10 +1,8 @@
 package model.dao;
 
+import jakarta.persistence.*;
 import model.entities.Usuario;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
-import jakarta.persistence.Query;
+
 import java.util.List;
 
 public class UsuarioDAO implements InterfaceDAO<Usuario>{
@@ -31,6 +29,7 @@ public class UsuarioDAO implements InterfaceDAO<Usuario>{
         manager.close();
     }
 
+
     @Override
     public List find() {
         manager = emf.createEntityManager();
@@ -41,11 +40,33 @@ public class UsuarioDAO implements InterfaceDAO<Usuario>{
 
     @Override
     public void update(Usuario a) {
-
+        manager = emf.createEntityManager();
+        manager.getTransaction().begin();
+        manager.merge(a);
+        manager.getTransaction().commit();
+        manager.close();
     }
 
     @Override
     public void delete(Usuario a) {
+        manager = emf.createEntityManager();
+        manager.getTransaction().begin();
+        manager.remove(a);
+        manager.getTransaction().commit();
+        manager.close();
 
+    }
+
+    //Método para buscar por id
+    public Usuario findId(int id){
+        manager = emf.createEntityManager();
+        try {
+            return manager.find(Usuario.class, id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            manager.close();
+        }
     }
 }

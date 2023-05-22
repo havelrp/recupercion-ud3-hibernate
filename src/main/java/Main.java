@@ -1,3 +1,4 @@
+import controllers.Menu;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -7,5 +8,7 @@ public class Main {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory ("default");
         EntityManager entityManager = emf.createEntityManager();
 
+        Menu menu = new Menu();
+        menu.accionPrincipal();
     }
 }

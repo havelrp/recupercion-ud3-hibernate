@@ -8,9 +8,11 @@ import java.util.Set;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
+
 @Entity
 @Table(name="usuarios")
 public class Usuario {
+
     @Id // Marca el campo como la clave de la tabla
     @GeneratedValue(strategy = IDENTITY)
     private int id;
@@ -19,7 +21,7 @@ public class Usuario {
     private String contrasena;
     private String fecha_nacimiento;
     private int amigos;
-    @OneToMany(mappedBy = "Usuario", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
     private List<Publicacion> lpublicacion;
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
@@ -94,4 +96,6 @@ public class Usuario {
     public void setGrupos(Set<Grupo> grupos) {
         this.grupos = grupos;
     }
+
+
 }
