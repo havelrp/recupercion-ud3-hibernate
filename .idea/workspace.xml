@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb8f6ab0-cd99-40fa-8e0f-ffd4e46cb8dd" name="Changes" comment="">
+    <list default="true" id="bb8f6ab0-cd99-40fa-8e0f-ffd4e46cb8dd" name="Changes" comment="feat: consultas y cierre de programa">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/views/MenuView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/MenuView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,9 +60,21 @@
       <updated>1684401328676</updated>
       <workItem from="1684401329725" duration="1467000" />
     </task>
+    <task id="LOCAL-00001" summary="feat: consultas y cierre de programa">
+      <created>1684782598463</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1684782598463</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat: consultas y cierre de programa" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: consultas y cierre de programa" />
   </component>
 </project>
