@@ -4,21 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb8f6ab0-cd99-40fa-8e0f-ffd4e46cb8dd" name="Changes" comment="feat: Primer commit">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/GrupoController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/PublicacionController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/UsuarioController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/views/GrupoView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/views/PublicacionView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/views/UsuarioView.java" afterDir="false" />
+    <list default="true" id="bb8f6ab0-cd99-40fa-8e0f-ffd4e46cb8dd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/dao/GrupoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/dao/GrupoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/dao/PublicacionDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/dao/PublicacionDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/dao/UsuarioDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/dao/UsuarioDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/entities/Grupo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/entities/Grupo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/entities/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/entities/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/views/MenuView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/MenuView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,6 +24,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2PxakBOzzLfE0pDkXTAfGDtzqEQ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -68,24 +60,11 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1684401328676</updated>
-      <workItem from="1684401329725" duration="6839000" />
-      <workItem from="1684742224674" duration="10826000" />
+      <workItem from="1684401329725" duration="1467000" />
     </task>
-    <task id="LOCAL-00001" summary="feat: Primer commit">
-      <created>1684408073199</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1684408073199</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: Primer commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Primer commit" />
   </component>
 </project>

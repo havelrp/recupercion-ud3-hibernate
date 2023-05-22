@@ -9,6 +9,8 @@ public class MenuView {
         System.out.println("1.- Opciones Usuario");
         System.out.println("2.- Opciones Publicacion");
         System.out.println("3.- Opciones Grupo");
+        System.out.println("4.- Consultas");
+        System.out.println("5.- Salir");
         int opm = sc.nextInt();
         return opm;
     }
@@ -38,6 +40,14 @@ public class MenuView {
         System.out.println("4.- Crear Grupo");
         int opg = sc.nextInt();
         return opg;
+    }
+
+    public int menuConsultas(){
+        System.out.println("1.- Consulta 1");
+        System.out.println("2.- Consulta 2");
+        System.out.println("3.- Consulta 3");
+        int opc = sc.nextInt();
+        return opc;
     }
 
 }

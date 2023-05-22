@@ -1,14 +1,17 @@
 package controllers;
 
 import com.sun.tools.javac.Main;
+import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import jakarta.persistence.TypedQuery;
 import model.entities.Grupo;
 import model.entities.Publicacion;
 import model.entities.Usuario;
 import views.MenuView;
 
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
@@ -18,6 +21,9 @@ public class Menu {
     UsuarioController usuarioController = new UsuarioController();
     PublicacionController publicacionController = new PublicacionController();
     GrupoController grupoController = new GrupoController();
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory ("default");
+    EntityManager entityManager = emf.createEntityManager();
+
 
     public void accionPrincipal(){
         int opm = mwp.menuPrincipal();
@@ -26,10 +32,16 @@ public class Menu {
                 accionUsuario();
                 break;
             case 2:
-                mwp.menuPublicacion();
+                accionPublicacion();
                 break;
             case 3:
-                mwp.menuGrupo();
+                accionGrupo();
+                break;
+            case 4:
+                accionConsultas();
+                break;
+            case 5:
+                System.out.println("Gracias por usar el programa");
                 break;
         }
     }
@@ -39,6 +51,7 @@ public class Menu {
         switch (opu){
             case 1:
                 usuarioController.viewUsuario();
+                accionPrincipal();
                 break;
 
             case 2:
@@ -59,12 +72,14 @@ public class Menu {
                 usuario_mod.setAmigos(amigos_mod);
 
                 usuarioController.update(usuario_mod);
+                accionPrincipal();
                 break;
             case 3:
                 System.out.println("Ingrese el id de la publicacion a eliminar");
                 int eliminar = sci.nextInt();
                 Usuario usuario_eliminar = usuarioController.viewUsuarioById(eliminar);
                 usuarioController.remove(usuario_eliminar);
+                accionPrincipal();
                 break;
             case 4:
                 Usuario usuario = new Usuario();
@@ -81,6 +96,7 @@ public class Menu {
                 int amigos = sci.nextInt();
                 usuario.setAmigos(amigos);
                 usuarioController.create(usuario);
+                accionPrincipal();
                 break;
         }
     }
@@ -90,6 +106,7 @@ public class Menu {
         switch (opp){
             case 1: //Ver publicaciones
                 publicacionController.viewPublicaciones();
+                accionPrincipal();
                 break;
             case 2: //Modificar publicacion
                 System.out.println("Ingrese el id de la publicacion a modificar");
@@ -110,6 +127,7 @@ public class Menu {
                 publicacion_mod.setFecha_publicacion(fecha_mod);
 
                 publicacionController.update(publicacion_mod);
+                accionPrincipal();
                 break;
 
             case 3: //Eliminar publicacion
@@ -117,6 +135,7 @@ public class Menu {
                 int eliminar = sci.nextInt();
                 Publicacion publicacion_eliminar = publicacionController.viewPublicacionById(eliminar);
                 publicacionController.remove(publicacion_eliminar);
+                accionPrincipal();
                 break;
 
             case 4: //Crear publicacion
@@ -132,15 +151,17 @@ public class Menu {
                 publicacion.setFecha_publicacion(fecha);
 
                 publicacionController.create(publicacion);
+                accionPrincipal();
                 break;
         }
     }
 
-    public  void accionGrupo(){
+    public  void accionGrupo() {
         int opg = mwp.menuGrupo();
-        switch (opg){
+        switch (opg) {
             case 1:
                 grupoController.viewGrupos();
+                accionPrincipal();
                 break;
             case 2:
                 System.out.println("Ingrese el id del grupo a modificar");
@@ -157,6 +178,7 @@ public class Menu {
                 grupo_mod.setMiembros(miembros_mod);
 
                 grupoController.update(grupo_mod);
+                accionPrincipal();
                 break;
 
             case 3:
@@ -164,6 +186,7 @@ public class Menu {
                 int eliminar = sci.nextInt();
                 Grupo grupo_eliminar = grupoController.viewGrupoById(eliminar);
                 grupoController.remove(grupo_eliminar);
+                accionPrincipal();
                 break;
             case 4:
                 Grupo grupo = new Grupo();
@@ -177,7 +200,45 @@ public class Menu {
                 int miembros = sci.nextInt();
                 grupo.setMiembros(miembros);
                 grupoController.create(grupo);
+                accionPrincipal();
                 break;
         }
     }
+    public void accionConsultas(){
+        int opc = mwp.menuConsultas();
+        switch (opc){
+            case 1:
+                System.out.println("Ingrese el id del usuario");
+                int id = sci.nextInt();
+                Usuario Usuario = usuarioController.viewUsuarioById(id);
+
+                EntityManager em = emf.createEntityManager();
+                String jpql1 = "SELECT p FROM Publicacion p WHERE p.usuario = :usuario";
+                TypedQuery<Publicacion> query1 = em.createQuery(jpql1, Publicacion.class);
+                query1.setParameter("usuario", Usuario);
+                List<Publicacion> publicaciones = query1.getResultList();
+                break;
+            case 2:
+                em = emf.createEntityManager();
+                System.out.println("Ingrese el nombre del grupo");
+                String nombreGrupo = sc.nextLine();
+
+                String jpql2 = "SELECT u FROM Usuario u JOIN u.grupos g WHERE g.nombre_grupo = :nombreGrupo";
+                TypedQuery<Usuario> query2 = em.createQuery(jpql2, Usuario.class);
+                query2.setParameter("nombreGrupo", nombreGrupo);
+                List<Usuario> usuarios_list = query2.getResultList();
+                break;
+            case 3:
+                System.out.println("Buscar usuario por nombre   ");
+                String nombre = sc.nextLine();
+
+                em = emf.createEntityManager();
+                String jpql = "SELECT u FROM Usuario u WHERE u.nombre LIKE :nombre";
+                TypedQuery<Usuario> query = em.createQuery(jpql, Usuario.class);
+                query.setParameter("nombre", "%" + nombre + "%");
+                List<Usuario> usuarios = query.getResultList();
+                break;
+        }
+    }
+
 }
