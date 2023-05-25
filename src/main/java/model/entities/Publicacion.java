@@ -2,6 +2,8 @@ package model.entities;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Entity
@@ -16,6 +18,22 @@ public class Publicacion {
     @ManyToOne
     @JoinColumn(name="id")
     private Usuario usuario;
+
+    public void setId_pub(int id_pub) {
+        this.id_pub = id_pub;
+    }
+
+    public List<Comentario> getLcomentario() {
+        return lcomentario;
+    }
+
+    public void setLcomentario(List<Comentario> lcomentario) {
+        this.lcomentario = lcomentario;
+    }
+
+    @OneToMany(mappedBy = "publicacion", cascade = CascadeType.ALL)
+    private List<Comentario> lcomentario;
+
     public Publicacion(){}
 
     public Publicacion(int id_pub,String contenido,Usuario usuario,String fecha_publicacion){

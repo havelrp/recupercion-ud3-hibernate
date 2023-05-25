@@ -5,8 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bb8f6ab0-cd99-40fa-8e0f-ffd4e46cb8dd" name="Changes" comment="feat: consultas y cierre de programa">
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/ComentarioController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/dao/ComentarioDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/entities/Comentario.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/views/ComentarioView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/UsuarioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/dao/GrupoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/dao/GrupoDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/dao/UsuarioDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/dao/UsuarioDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/entities/Publicacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/entities/Publicacion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/views/GrupoView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/GrupoView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/views/MenuView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/MenuView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/views/PublicacionView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/PublicacionView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/views/UsuarioView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/UsuarioView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +72,8 @@
       <option name="presentableId" value="Default" />
       <updated>1684401328676</updated>
       <workItem from="1684401329725" duration="1467000" />
+      <workItem from="1684845448744" duration="181000" />
+      <workItem from="1685001456001" duration="4804000" />
     </task>
     <task id="LOCAL-00001" summary="feat: consultas y cierre de programa">
       <created>1684782598463</created>

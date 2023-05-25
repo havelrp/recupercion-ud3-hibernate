@@ -34,12 +34,18 @@ public class UsuarioController {
         view.viewAllUsuarios(usuarios);
     }
 
-    public void viewUsuarop(Usuario usuario) {
+    public void viewUsuaro(Usuario usuario) {
         view.viewUsuario(usuario);
     }
 
     public Usuario viewUsuarioById(int id) {
         Usuario usuario = usuarioDAO.findId(id);
+        view.viewUsuario(usuario);
+        return usuario;
+    }
+
+    public Usuario viewUsuarioByNombre(String nombre) {
+        Usuario usuario = usuarioDAO.findUsuarioByNombre(nombre);
         view.viewUsuario(usuario);
         return usuario;
     }

@@ -10,10 +10,8 @@ import java.util.List;
 
 public class GrupoDAO implements InterfaceDAO<Grupo>{
 
-
     private EntityManagerFactory emf;
     private EntityManager manager;
-
 
     private void initHibernate() {
         emf = Persistence.createEntityManagerFactory("default");
@@ -62,11 +60,24 @@ public class GrupoDAO implements InterfaceDAO<Grupo>{
         manager.close();
 
     }
-
+    //Método para buscar un grupo por su id
     public Grupo findId(int id){
         manager = emf.createEntityManager();
         try {
             return manager.find(Grupo.class, id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            manager.close();
+        }
+    }
+
+    //Método para buscar un grupo por su nombre
+    public Grupo findGrupobyNombre(String name){
+        manager = emf.createEntityManager();
+        try {
+            return manager.find(Grupo.class, name);
         } catch (Exception e) {
             e.printStackTrace();
             return null;

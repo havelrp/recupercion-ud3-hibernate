@@ -5,6 +5,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.TypedQuery;
+import model.entities.Comentario;
 import model.entities.Grupo;
 import model.entities.Publicacion;
 import model.entities.Usuario;
@@ -21,6 +22,7 @@ public class Menu {
     UsuarioController usuarioController = new UsuarioController();
     PublicacionController publicacionController = new PublicacionController();
     GrupoController grupoController = new GrupoController();
+    ComentarioController comentarioController = new ComentarioController();
     EntityManagerFactory emf = Persistence.createEntityManagerFactory ("default");
     EntityManager entityManager = emf.createEntityManager();
 
@@ -43,6 +45,8 @@ public class Menu {
             case 5:
                 System.out.println("Gracias por usar el programa");
                 break;
+            case 6:
+                accionComentario();
         }
     }
 
@@ -55,13 +59,13 @@ public class Menu {
                 break;
 
             case 2:
-                System.out.println("Ingrese el id del usuario a modificar");
-                int id = sci.nextInt();
-                Usuario usuario_mod= usuarioController.viewUsuarioById(id);
+                System.out.println("Ingrese el nombre del usuario a modificar");
+                String nombre = sc.nextLine();
+                Usuario usuario_mod= usuarioController.viewUsuarioByNombre(nombre);
                 System.out.println("Ingrese el nombre del usuario");
                 String nombre_mod= sc.nextLine();
                 usuario_mod.setNombre(nombre_mod);
-                System.out.println("Ingrese el apellido del usuario");
+                System.out.println("Ingrese la fecha de nacimiento del usuario");
                 String fecha_nacimiento_mod= sc.nextLine();
                 usuario_mod.setFecha_nacimiento(fecha_nacimiento_mod);
                 System.out.println("Ingrese la contraseña del usuario");
@@ -75,16 +79,16 @@ public class Menu {
                 accionPrincipal();
                 break;
             case 3:
-                System.out.println("Ingrese el id de la publicacion a eliminar");
-                int eliminar = sci.nextInt();
-                Usuario usuario_eliminar = usuarioController.viewUsuarioById(eliminar);
-                usuarioController.remove(usuario_eliminar);
+                System.out.println("Ingrese el nombre del usuario a borrar");
+                nombre = sc.nextLine();
+                Usuario usuario_rmv= usuarioController.viewUsuarioByNombre(nombre);
+                usuarioController.remove(usuario_rmv);
                 accionPrincipal();
                 break;
             case 4:
                 Usuario usuario = new Usuario();
                 System.out.println("Ingrese el nombre del usuario");
-                String nombre = sc.nextLine();
+                nombre = sc.nextLine();
                 usuario.setNombre(nombre);
                 System.out.println("Ingrese la fecha de nacimiento del usuario");
                 String fecha_nacimiento = sc.nextLine();
@@ -217,6 +221,7 @@ public class Menu {
                 TypedQuery<Publicacion> query1 = em.createQuery(jpql1, Publicacion.class);
                 query1.setParameter("usuario", Usuario);
                 List<Publicacion> publicaciones = query1.getResultList();
+                accionPrincipal();
                 break;
             case 2:
                 em = emf.createEntityManager();
@@ -227,18 +232,53 @@ public class Menu {
                 TypedQuery<Usuario> query2 = em.createQuery(jpql2, Usuario.class);
                 query2.setParameter("nombreGrupo", nombreGrupo);
                 List<Usuario> usuarios_list = query2.getResultList();
+                accionPrincipal();
                 break;
             case 3:
                 System.out.println("Buscar usuario por nombre   ");
                 String nombre = sc.nextLine();
-
-                em = emf.createEntityManager();
-                String jpql = "SELECT u FROM Usuario u WHERE u.nombre LIKE :nombre";
-                TypedQuery<Usuario> query = em.createQuery(jpql, Usuario.class);
-                query.setParameter("nombre", "%" + nombre + "%");
-                List<Usuario> usuarios = query.getResultList();
+                usuarioController.viewUsuarioByNombre(nombre);
+                accionPrincipal();
                 break;
         }
     }
 
+
+    public void accionComentario(){
+        int opcom = mwp.menuComentarios();
+        switch (opcom){
+            case 1:
+                Comentario comentario = new Comentario();
+                System.out.println("Ingrese el comentario");
+                String descripcion = sc.nextLine();
+                comentario.setDescripcion(descripcion);
+                System.out.println("Ingrese el autor");
+                String autor = sc.nextLine();
+                comentario.setAutor(autor);
+                System.out.println("Ingrese la fecha del comentario");
+                String fecha_comentario = sc.nextLine();
+                comentario.setFecha_comentario(fecha_comentario);
+
+                System.out.println("Ingrese la id de la publicacion");
+                int id = sci.nextInt();
+                Publicacion publicacion_com = publicacionController.viewPublicacionById(id);
+                comentario.setPublicacion(publicacion_com);
+
+                comentarioController.create(comentario);
+                accionPrincipal();
+                break;
+            case 2:
+                grupoController.viewGrupos();
+                accionPrincipal();
+                break;
+
+            case 3:
+                System.out.println("Ingrese la id de la publicacion");
+                int id_mostrar = sci.nextInt();
+                Publicacion publicacion_mostrar = publicacionController.viewPublicacionById(id_mostrar);
+                publicacion_mostrar.getLcomentario();
+                accionPrincipal();
+                break;
+        }
+    }
 }

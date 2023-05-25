@@ -11,6 +11,7 @@ public class MenuView {
         System.out.println("3.- Opciones Grupo");
         System.out.println("4.- Consultas");
         System.out.println("5.- Salir");
+        System.out.println("6.- Opciones Comentario");
         int opm = sc.nextInt();
         return opm;
     }
@@ -48,6 +49,13 @@ public class MenuView {
         System.out.println("3.- Consulta 3");
         int opc = sc.nextInt();
         return opc;
+    }
+
+    public int menuComentarios(){
+        System.out.println("1.- Crear comentario");
+        System.out.println("2.- Listar comentarios");
+        int opcom = sc.nextInt();
+        return opcom;
     }
 
 }

@@ -7,12 +7,12 @@ import java.util.List;
 
 public class PublicacionView {
     public void viewPublicacion(Publicacion publicacion) {
-        System.out.println("Publicacion data: " +publicacion);
+        System.out.println("Id: "+publicacion.getId_pub()+" Contenido: "+publicacion.getContenido()+" Fecha de publicación: "+publicacion.getFecha_publicacion()+"\n");
     }
 
     public void viewAllPublicaciones(List<Publicacion> publicacion) {
         for (Publicacion a : publicacion) {
-            System.out.println("Usuario data: "+ a);
+            viewPublicacion(a);
         }
     }
 }

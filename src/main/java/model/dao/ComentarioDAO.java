@@ -1,67 +1,68 @@
 package model.dao;
 
-import jakarta.persistence.*;
-import model.entities.Usuario;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+import model.entities.Comentario;
+import model.entities.Grupo;
 
 import java.util.List;
 
-public class UsuarioDAO implements InterfaceDAO<Usuario>{
+public class ComentarioDAO implements  InterfaceDAO<Comentario>{
 
     private EntityManagerFactory emf;
     private EntityManager manager;
-
 
     private void initHibernate() {
         emf = Persistence.createEntityManagerFactory("default");
     }
 
-    public UsuarioDAO() {
+    public ComentarioDAO() {
         initHibernate();
     }
 
 
     @Override
-    public void create(Usuario a) {
+    public void create(Comentario comentario) {
         manager = emf.createEntityManager();
         manager.getTransaction().begin();
-        manager.persist(a);
+        manager.persist(comentario);
         manager.getTransaction().commit();
         manager.close();
     }
-
 
     @Override
     public List find() {
         manager = emf.createEntityManager();
         manager.getTransaction().begin();
-        Query query = manager.createQuery("FROM Usuario ");
-        return query.getResultList();
+        List<Grupo> grupos = manager.createQuery("FROM Grupo ").getResultList();
+        manager.getTransaction().commit();
+        manager.close();
+        return grupos;
     }
 
     @Override
-    public void update(Usuario a) {
+    public void update(Comentario comentario) {
         manager = emf.createEntityManager();
         manager.getTransaction().begin();
-        manager.merge(a);
+        manager.merge(comentario);
         manager.getTransaction().commit();
         manager.close();
     }
 
     @Override
-    public void delete(Usuario a) {
+    public void delete(Comentario comentario) {
         manager = emf.createEntityManager();
         manager.getTransaction().begin();
-        manager.merge(a);
-        manager.remove(a);
+        manager.remove(comentario);
         manager.getTransaction().commit();
         manager.close();
     }
 
-    //Método para buscar por id
-    public Usuario findId(int id){
+    public Comentario findId(int id){
         manager = emf.createEntityManager();
         try {
-            return manager.find(Usuario.class, id);
+            return manager.find(Comentario.class, id);
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -69,20 +70,4 @@ public class UsuarioDAO implements InterfaceDAO<Usuario>{
             manager.close();
         }
     }
-
-    //Método para buscar por nombre
-    public Usuario findUsuarioByNombre(String nombre){
-        manager = emf.createEntityManager();
-        try {
-            Query query = manager.createQuery("FROM Usuario WHERE nombre = :nombre");
-            query.setParameter("nombre", nombre);
-            return (Usuario) query.getSingleResult();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        } finally {
-            manager.close();
-        }
-    }
-
 }
