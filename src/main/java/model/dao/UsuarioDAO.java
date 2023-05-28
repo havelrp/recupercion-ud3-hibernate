@@ -51,7 +51,7 @@ public class UsuarioDAO implements InterfaceDAO<Usuario>{
     public void delete(Usuario a) {
         manager = emf.createEntityManager();
         manager.getTransaction().begin();
-        manager.merge(a);
+        a = manager.merge(a);
         manager.remove(a);
         manager.getTransaction().commit();
         manager.close();
@@ -83,6 +83,20 @@ public class UsuarioDAO implements InterfaceDAO<Usuario>{
         } finally {
             manager.close();
         }
+    }
+
+    //Método para buscar usuarios que realizaron una publicación
+    public List<Usuario> listarAutores(String nombre){
+        manager = emf.createEntityManager();
+        String jpql = "SELECT u FROM Usuario u WHERE EXISTS (SELECT p FROM Publicacion p WHERE p.usuario = u)";
+        TypedQuery<Usuario> query = manager.createQuery(jpql, Usuario.class);
+        List<Usuario> usuarios = query.getResultList();
+        for (Usuario usuario : usuarios) {
+            System.out.println(usuario.getNombre());
+        }
+        manager.close();
+        return usuarios;
+
     }
 
 }

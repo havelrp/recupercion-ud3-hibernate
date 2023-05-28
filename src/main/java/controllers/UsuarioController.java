@@ -49,4 +49,9 @@ public class UsuarioController {
         view.viewUsuario(usuario);
         return usuario;
     }
+
+    public List<Usuario> consultaUsuario(String nombre) {
+        List<Usuario> usuarios = usuarioDAO.listarAutores(nombre);
+        return usuarios;
+    }
 }

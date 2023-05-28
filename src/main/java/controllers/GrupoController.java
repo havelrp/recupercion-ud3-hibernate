@@ -32,16 +32,30 @@ public class GrupoController {
 
     public void viewGrupos() {
         List<Grupo> grupos = grupoDAO.find();
-        view.viewAllGrupo(grupos);
+        view.viewAllGrupos(grupos);
     }
 
     public void viewGrupo(Grupo grupo) {
-        view.viewGrupos(grupo);
+        view.viewGrupo(grupo);
     }
 
     public Grupo viewGrupoById(int id) {
         Grupo grupo = grupoDAO.findId(id);
-        view.viewGrupos(grupo);
+        view.viewGrupo(grupo);
         return grupo;
+    }
+
+    public Grupo viewGrupoByNombre(String name_grupo) {
+        Grupo grupo = grupoDAO.findGrupobyNombre(name_grupo);
+        view.viewGrupo(grupo);
+        return grupo;
+    }
+
+    public void consultaGrupo(String nombre_usuario) {
+        grupoDAO.listarUsuarios(nombre_usuario);
+    }
+
+    public void meterUsuario(String grupo,Usuario usuario) {
+        grupoDAO.meterUsuarioGrupo(grupo,usuario);
     }
 }

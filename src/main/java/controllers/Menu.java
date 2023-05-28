@@ -113,13 +113,12 @@ public class Menu {
                 accionPrincipal();
                 break;
             case 2: //Modificar publicacion
-                System.out.println("Ingrese el id de la publicacion a modificar");
-                int id_mod = sci.nextInt();
-                Publicacion publicacion_mod = publicacionController.viewPublicacionById(id_mod);
+                System.out.println("Ingrese el titulo de la publicacion a modificar");
+                String titulo_mod = sc.nextLine();
+                Publicacion publicacion_mod = publicacionController.viewPublicacionByTitulo(titulo_mod);
 
-                System.out.println("Ingrese el id del autor");
-                int id_autor_mod = sci.nextInt();
-                Usuario autor_mod = usuarioController.viewUsuarioById(id_autor_mod);
+                System.out.println("Ingrese el nombre del autor");
+                Usuario autor_mod = usuarioController.viewUsuarioByNombre(sc.nextLine());
                 publicacion_mod.setUsuario(autor_mod);
 
                 System.out.println("Ingrese el contenido de la publicacion");
@@ -135,18 +134,21 @@ public class Menu {
                 break;
 
             case 3: //Eliminar publicacion
-                System.out.println("Ingrese el id de la publicacion a eliminar");
-                int eliminar = sci.nextInt();
-                Publicacion publicacion_eliminar = publicacionController.viewPublicacionById(eliminar);
+                System.out.println("Ingrese el titulo de la publicacion a modificar");
+                String titulo_eliminar = sc.nextLine();
+                Publicacion publicacion_eliminar = publicacionController.viewPublicacionByTitulo(titulo_eliminar);
                 publicacionController.remove(publicacion_eliminar);
                 accionPrincipal();
                 break;
 
             case 4: //Crear publicacion
                 Publicacion publicacion = new Publicacion();
-                System.out.println("Ingrese el id del autor");
-                int id_autor = sci.nextInt();
-                publicacion.setUsuario(usuarioController.viewUsuarioById(id_autor));
+                System.out.println("Ingrese el nombre del autor");
+                Usuario autor = usuarioController.viewUsuarioByNombre(sc.nextLine());
+                publicacion.setUsuario(autor);
+                System.out.println("Ingrese el titulo de la publicacion");
+                String titulo = sc.nextLine();
+                publicacion.setTitulo(titulo);
                 System.out.println("Ingrese el contenido de la publicacion");
                 String contenido= sc.nextLine();
                 publicacion.setContenido(contenido);
@@ -169,15 +171,15 @@ public class Menu {
                 break;
             case 2:
                 System.out.println("Ingrese el id del grupo a modificar");
-                int id = sci.nextInt();
-                Grupo grupo_mod = grupoController.viewGrupoById(id);
-                System.out.println("Ingrese el nombre del grupo");
                 String nombre_mod = sc.nextLine();
+                Grupo grupo_mod = grupoController.viewGrupoByNombre(nombre_mod);
+                System.out.println("Ingrese el nombre del grupo");
+                nombre_mod = sc.nextLine();
                 grupo_mod.setNombre_grupo(nombre_mod);
                 System.out.println("Ingrese la descripcion del grupo");
                 String descripcion_mod = sc.nextLine();
                 grupo_mod.setDescripcion(descripcion_mod);
-                System.out.println("Ingrese miembro");
+                System.out.println("Ingrese el número de miembros");
                 int miembros_mod = sci.nextInt();
                 grupo_mod.setMiembros(miembros_mod);
 
@@ -186,9 +188,9 @@ public class Menu {
                 break;
 
             case 3:
-                System.out.println("Ingrese el id del grupo a eliminar");
-                int eliminar = sci.nextInt();
-                Grupo grupo_eliminar = grupoController.viewGrupoById(eliminar);
+                System.out.println("Ingrese el id del grupo a modificar");
+                String nombre_eliminar = sc.nextLine();
+                Grupo grupo_eliminar = grupoController.viewGrupoByNombre(nombre_eliminar);
                 grupoController.remove(grupo_eliminar);
                 accionPrincipal();
                 break;
@@ -206,38 +208,36 @@ public class Menu {
                 grupoController.create(grupo);
                 accionPrincipal();
                 break;
+            case 5:
+                System.out.println("Ingrese el nombre del grupo");
+                nombre = sc.nextLine();
+                System.out.println("Ingrese el nombre del usuario");
+                String nombre_usuario = sc.nextLine();
+                Usuario usuario= usuarioController.viewUsuarioByNombre(nombre_usuario);
+                grupoController.meterUsuario(nombre,usuario);
+                accionPrincipal();
+                break;
         }
     }
     public void accionConsultas(){
         int opc = mwp.menuConsultas();
         switch (opc){
             case 1:
-                System.out.println("Ingrese el id del usuario");
-                int id = sci.nextInt();
-                Usuario Usuario = usuarioController.viewUsuarioById(id);
-
-                EntityManager em = emf.createEntityManager();
-                String jpql1 = "SELECT p FROM Publicacion p WHERE p.usuario = :usuario";
-                TypedQuery<Publicacion> query1 = em.createQuery(jpql1, Publicacion.class);
-                query1.setParameter("usuario", Usuario);
-                List<Publicacion> publicaciones = query1.getResultList();
+                System.out.println("Ingrese el nombre del usuario");
+                String nombre = sc.nextLine();
+                usuarioController.consultaUsuario(nombre);
                 accionPrincipal();
                 break;
             case 2:
-                em = emf.createEntityManager();
-                System.out.println("Ingrese el nombre del grupo");
-                String nombreGrupo = sc.nextLine();
-
-                String jpql2 = "SELECT u FROM Usuario u JOIN u.grupos g WHERE g.nombre_grupo = :nombreGrupo";
-                TypedQuery<Usuario> query2 = em.createQuery(jpql2, Usuario.class);
-                query2.setParameter("nombreGrupo", nombreGrupo);
-                List<Usuario> usuarios_list = query2.getResultList();
+                System.out.println("Ingrese la palabra clave que quiere buscar en las publicaciones");
+                String palabra = sc.nextLine();
+                publicacionController.consultaPublicacion(palabra);
                 accionPrincipal();
                 break;
             case 3:
-                System.out.println("Buscar usuario por nombre   ");
-                String nombre = sc.nextLine();
-                usuarioController.viewUsuarioByNombre(nombre);
+                System.out.println("Ingrese el nombre de usuario del que quiere listar grupos ");
+                nombre = sc.nextLine();
+                grupoController.consultaGrupo(nombre);
                 accionPrincipal();
                 break;
         }

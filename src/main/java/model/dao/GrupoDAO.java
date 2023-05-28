@@ -1,8 +1,6 @@
 package model.dao;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
+import jakarta.persistence.*;
 import model.entities.Grupo;
 import model.entities.Usuario;
 
@@ -46,7 +44,8 @@ public class GrupoDAO implements InterfaceDAO<Grupo>{
     public void update(Grupo grupo) {
         manager = emf.createEntityManager();
         manager.getTransaction().begin();
-        manager.merge(grupo);
+        grupo = manager.merge(grupo);
+        manager.remove(grupo);
         manager.getTransaction().commit();
         manager.close();
     }
@@ -74,13 +73,46 @@ public class GrupoDAO implements InterfaceDAO<Grupo>{
     }
 
     //Método para buscar un grupo por su nombre
-    public Grupo findGrupobyNombre(String name){
+    public Grupo findGrupobyNombre(String name_grupo){
         manager = emf.createEntityManager();
         try {
-            return manager.find(Grupo.class, name);
+            Query query = manager.createQuery("FROM Grupo WHERE nombre_grupo = :nombre_grupo");
+            query.setParameter("nombre_grupo", name_grupo);
+            return (Grupo) query.getSingleResult();
         } catch (Exception e) {
             e.printStackTrace();
             return null;
+        } finally {
+            manager.close();
+        }
+    }
+
+    public void listarUsuarios(String nombre){
+        manager = emf.createEntityManager();
+        try {
+            String jpql = "SELECT g FROM Grupo g JOIN g.usuarios u WHERE u.nombre = :nombre_usuario";
+            TypedQuery<Grupo> query = manager.createQuery(jpql, Grupo.class);
+            query.setParameter("nombre_usuario", nombre);
+            List<Grupo> grupos = query.getResultList();
+            for (Grupo grupo : grupos) {
+                System.out.println(grupo.getNombre_grupo());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            manager.close();
+        }
+    }
+
+    public void meterUsuarioGrupo(String nombre_grupo, Usuario usuario){
+        manager = emf.createEntityManager();
+        try {
+            manager.getTransaction().begin();
+            Grupo grupo = findGrupobyNombre(nombre_grupo);
+            grupo.getUsuarios().add(usuario);
+            manager.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             manager.close();
         }

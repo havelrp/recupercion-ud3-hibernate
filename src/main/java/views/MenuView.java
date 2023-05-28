@@ -39,14 +39,15 @@ public class MenuView {
         System.out.println("2.- Modificar Grupo");
         System.out.println("3.- Borrar Grupo");
         System.out.println("4.- Crear Grupo");
+        System.out.println("5.- Meter usuario en grupo");
         int opg = sc.nextInt();
         return opg;
     }
 
     public int menuConsultas(){
-        System.out.println("1.- Consulta 1");
-        System.out.println("2.- Consulta 2");
-        System.out.println("3.- Consulta 3");
+        System.out.println("1.- Consulta sobre usuarios");
+        System.out.println("2.- Consulta sobre publicaciones");
+        System.out.println("3.- Consulta sobre grupos");
         int opc = sc.nextInt();
         return opc;
     }

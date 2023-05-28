@@ -12,6 +12,7 @@ public class Publicacion {
     @Id // Marca el campo como la clave de la tabla
     @GeneratedValue(strategy = IDENTITY)
     private int id_pub;
+    private String titulo;
     private String contenido;
     private String fecha_publicacion;
 
@@ -36,11 +37,20 @@ public class Publicacion {
 
     public Publicacion(){}
 
-    public Publicacion(int id_pub,String contenido,Usuario usuario,String fecha_publicacion){
+    public Publicacion(int id_pub,String contenido,String titulo,Usuario usuario,String fecha_publicacion){
         this.id_pub =id_pub;
         this.contenido = contenido;
+        this.titulo = titulo;
         this.usuario = usuario;
         this.fecha_publicacion = fecha_publicacion;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
     public int getId_pub() {

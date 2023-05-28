@@ -45,7 +45,8 @@ public class ComentarioDAO implements  InterfaceDAO<Comentario>{
     public void update(Comentario comentario) {
         manager = emf.createEntityManager();
         manager.getTransaction().begin();
-        manager.merge(comentario);
+        comentario = manager.merge(comentario);
+        manager.remove(comentario);
         manager.getTransaction().commit();
         manager.close();
     }

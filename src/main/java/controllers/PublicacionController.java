@@ -44,4 +44,14 @@ public class PublicacionController {
         view.viewPublicacion(publicacion);
         return publicacion;
     }
+
+    public Publicacion viewPublicacionByTitulo(String titulo) {
+        Publicacion publicacion = publicacionDAO.findPublicacionbytitulo(titulo);
+        view.viewPublicacion(publicacion);
+        return publicacion;
+    }
+
+    public void consultaPublicacion(String palabraClave) {
+        publicacionDAO.buscarPalabraClave(palabraClave);
+    }
 }
