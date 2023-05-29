@@ -21,6 +21,7 @@ public class MenuView {
         System.out.println("2.- Modificar Usuario");
         System.out.println("3.- Borrar Usuario");
         System.out.println("4.- Crear Usuario");
+        System.out.println("5.- Atras");
         int opu = sc.nextInt();
         return opu;
     }
@@ -30,6 +31,7 @@ public class MenuView {
         System.out.println("2.- Modificar Publicacion");
         System.out.println("3.- Borrar Publicacion");
         System.out.println("4.- Crear Publicacion");
+        System.out.println("5.- Atras");
         int opp = sc.nextInt();
         return opp;
     }
@@ -40,6 +42,7 @@ public class MenuView {
         System.out.println("3.- Borrar Grupo");
         System.out.println("4.- Crear Grupo");
         System.out.println("5.- Meter usuario en grupo");
+        System.out.println("6.- Atras");
         int opg = sc.nextInt();
         return opg;
     }
@@ -48,6 +51,7 @@ public class MenuView {
         System.out.println("1.- Consulta sobre usuarios");
         System.out.println("2.- Consulta sobre publicaciones");
         System.out.println("3.- Consulta sobre grupos");
+        System.out.println("4.- Atras");
         int opc = sc.nextInt();
         return opc;
     }

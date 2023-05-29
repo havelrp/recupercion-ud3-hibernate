@@ -34,7 +34,7 @@ public class UsuarioController {
         view.viewAllUsuarios(usuarios);
     }
 
-    public void viewUsuaro(Usuario usuario) {
+    public void viewUsuario(Usuario usuario) {
         view.viewUsuario(usuario);
     }
 

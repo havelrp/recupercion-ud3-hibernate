@@ -104,12 +104,22 @@ public class GrupoDAO implements InterfaceDAO<Grupo>{
         }
     }
 
-    public void meterUsuarioGrupo(String nombre_grupo, Usuario usuario){
+    public void meterUsuarioGrupo(int id_grupo, int id_usuario){
         manager = emf.createEntityManager();
         try {
             manager.getTransaction().begin();
-            Grupo grupo = findGrupobyNombre(nombre_grupo);
+            Grupo grupo = manager.find(Grupo.class, id_grupo);
+            Usuario usuario = manager.find(Usuario.class, id_usuario);
+
+
+            usuario.getGrupos().size();
+
+            usuario.getGrupos().add(grupo);
             grupo.getUsuarios().add(usuario);
+
+            manager.merge(usuario);
+            manager.merge(grupo);
+
             manager.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();

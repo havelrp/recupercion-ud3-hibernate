@@ -55,7 +55,7 @@ public class GrupoController {
         grupoDAO.listarUsuarios(nombre_usuario);
     }
 
-    public void meterUsuario(String grupo,Usuario usuario) {
+    public void meterUsuario(int grupo,int usuario) {
         grupoDAO.meterUsuarioGrupo(grupo,usuario);
     }
 }

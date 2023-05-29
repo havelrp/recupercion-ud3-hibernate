@@ -23,7 +23,7 @@ public class Usuario {
     private int amigos;
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
     private List<Publicacion> lpublicacion;
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
             name = "usuario_grupo",
             joinColumns = @JoinColumn(name ="id"),

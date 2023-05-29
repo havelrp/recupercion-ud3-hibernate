@@ -23,8 +23,6 @@ public class Menu {
     PublicacionController publicacionController = new PublicacionController();
     GrupoController grupoController = new GrupoController();
     ComentarioController comentarioController = new ComentarioController();
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory ("default");
-    EntityManager entityManager = emf.createEntityManager();
 
 
     public void accionPrincipal(){
@@ -102,6 +100,9 @@ public class Menu {
                 usuarioController.create(usuario);
                 accionPrincipal();
                 break;
+            case 5:
+                accionPrincipal();
+                break;
         }
     }
 
@@ -159,6 +160,9 @@ public class Menu {
                 publicacionController.create(publicacion);
                 accionPrincipal();
                 break;
+            case 5:
+                accionPrincipal();
+                break;
         }
     }
 
@@ -210,11 +214,19 @@ public class Menu {
                 break;
             case 5:
                 System.out.println("Ingrese el nombre del grupo");
-                nombre = sc.nextLine();
+                String nombre_grupo = sc.nextLine();
+                Grupo meterGrupo = grupoController.viewGrupoByNombre(nombre_grupo);
+                int id_grupo = meterGrupo.getId_grupo();
+
                 System.out.println("Ingrese el nombre del usuario");
                 String nombre_usuario = sc.nextLine();
-                Usuario usuario= usuarioController.viewUsuarioByNombre(nombre_usuario);
-                grupoController.meterUsuario(nombre,usuario);
+                Usuario meterUsuario = usuarioController.viewUsuarioByNombre(nombre_usuario);
+                int id_usuario = meterUsuario.getId();
+
+                grupoController.meterUsuario(id_grupo ,id_usuario);
+                accionPrincipal();
+                break;
+            case 6:
                 accionPrincipal();
                 break;
         }
@@ -238,6 +250,9 @@ public class Menu {
                 System.out.println("Ingrese el nombre de usuario del que quiere listar grupos ");
                 nombre = sc.nextLine();
                 grupoController.consultaGrupo(nombre);
+                accionPrincipal();
+                break;
+            case 4:
                 accionPrincipal();
                 break;
         }
