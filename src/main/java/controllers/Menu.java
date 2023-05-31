@@ -178,7 +178,7 @@ public class Menu {
                 accionPrincipal();
                 break;
             case 2:
-                System.out.println("Ingrese el id del grupo a modificar");
+                System.out.println("Ingrese el nombre del grupo a borrar");
                 String nombre_mod = sc.nextLine();
                 Grupo grupo_mod = grupoController.viewGrupoByNombre(nombre_mod);
                 System.out.println("Ingrese el nombre del grupo");
@@ -196,7 +196,7 @@ public class Menu {
                 break;
 
             case 3:
-                System.out.println("Ingrese el id del grupo a modificar");
+                System.out.println("Ingrese el nombre del grupo a modificar");
                 String nombre_eliminar = sc.nextLine();
                 Grupo grupo_eliminar = grupoController.viewGrupoByNombre(nombre_eliminar);
                 grupoController.remove(grupo_eliminar);
