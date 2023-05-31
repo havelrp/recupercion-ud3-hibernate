@@ -60,7 +60,7 @@ public class Menu {
                 System.out.println("Ingrese el nombre del usuario a modificar");
                 String nombre = sc.nextLine();
                 Usuario usuario_mod= usuarioController.viewUsuarioByNombre(nombre);
-                System.out.println("Ingrese el nombre del usuario");
+                System.out.println("Ingrese el nuevo nombre del usuario");
                 String nombre_mod= sc.nextLine();
                 usuario_mod.setNombre(nombre_mod);
                 System.out.println("Ingrese la fecha de nacimiento del usuario");
@@ -69,7 +69,7 @@ public class Menu {
                 System.out.println("Ingrese la contraseña del usuario");
                 String contrasena_mod= sc.nextLine();
                 usuario_mod.setContrasena(contrasena_mod);
-                System.out.println("Ingrese el correo del usuario");
+                System.out.println("Ingrese el nº de amigos del usuario");
                 int amigos_mod= sci.nextInt();
                 usuario_mod.setAmigos(amigos_mod);
 
@@ -118,6 +118,10 @@ public class Menu {
                 String titulo_mod = sc.nextLine();
                 Publicacion publicacion_mod = publicacionController.viewPublicacionByTitulo(titulo_mod);
 
+
+                System.out.println("Ingrese el nuevo titulo");
+                titulo_mod = sc.nextLine();
+                publicacion_mod.setTitulo(titulo_mod);
                 System.out.println("Ingrese el nombre del autor");
                 Usuario autor_mod = usuarioController.viewUsuarioByNombre(sc.nextLine());
                 publicacion_mod.setUsuario(autor_mod);

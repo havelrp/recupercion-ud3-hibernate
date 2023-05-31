@@ -96,7 +96,6 @@ public class UsuarioDAO implements InterfaceDAO<Usuario>{
         }
         manager.close();
         return usuarios;
-
     }
 
 }

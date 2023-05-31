@@ -44,8 +44,7 @@ public class GrupoDAO implements InterfaceDAO<Grupo>{
     public void update(Grupo grupo) {
         manager = emf.createEntityManager();
         manager.getTransaction().begin();
-        grupo = manager.merge(grupo);
-        manager.remove(grupo);
+        manager.merge(grupo);
         manager.getTransaction().commit();
         manager.close();
     }

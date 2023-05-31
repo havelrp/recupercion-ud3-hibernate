@@ -18,7 +18,7 @@ public class Grupo {
     private String nombre_grupo;
     private String descripcion;
     private int miembros;
-    @ManyToMany(mappedBy = "grupos", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "grupos", cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
     private Set<Usuario> usuarios = new HashSet<>();
 
     public Grupo() {
