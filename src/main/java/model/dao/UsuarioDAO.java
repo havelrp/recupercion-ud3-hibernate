@@ -86,7 +86,7 @@ public class UsuarioDAO implements InterfaceDAO<Usuario>{
     }
 
     //Método para buscar usuarios que realizaron una publicación
-    public List<Usuario> listarAutores(String nombre){
+    public List<Usuario> listarAutores(){
         manager = emf.createEntityManager();
         String jpql = "SELECT u FROM Usuario u WHERE EXISTS (SELECT p FROM Publicacion p WHERE p.usuario = u)";
         TypedQuery<Usuario> query = manager.createQuery(jpql, Usuario.class);

@@ -139,7 +139,7 @@ public class Menu {
                 break;
 
             case 3: //Eliminar publicacion
-                System.out.println("Ingrese el titulo de la publicacion a modificar");
+                System.out.println("Ingrese el titulo de la publicacion a borrar");
                 String titulo_eliminar = sc.nextLine();
                 Publicacion publicacion_eliminar = publicacionController.viewPublicacionByTitulo(titulo_eliminar);
                 publicacionController.remove(publicacion_eliminar);
@@ -178,7 +178,7 @@ public class Menu {
                 accionPrincipal();
                 break;
             case 2:
-                System.out.println("Ingrese el nombre del grupo a borrar");
+                System.out.println("Ingrese el nombre del grupo a modificar");
                 String nombre_mod = sc.nextLine();
                 Grupo grupo_mod = grupoController.viewGrupoByNombre(nombre_mod);
                 System.out.println("Ingrese el nombre del grupo");
@@ -196,7 +196,7 @@ public class Menu {
                 break;
 
             case 3:
-                System.out.println("Ingrese el nombre del grupo a modificar");
+                System.out.println("Ingrese el nombre del grupo a borrar");
                 String nombre_eliminar = sc.nextLine();
                 Grupo grupo_eliminar = grupoController.viewGrupoByNombre(nombre_eliminar);
                 grupoController.remove(grupo_eliminar);
@@ -239,9 +239,7 @@ public class Menu {
         int opc = mwp.menuConsultas();
         switch (opc){
             case 1:
-                System.out.println("Ingrese el nombre del usuario");
-                String nombre = sc.nextLine();
-                usuarioController.consultaUsuario(nombre);
+                usuarioController.consultaUsuario();
                 accionPrincipal();
                 break;
             case 2:
@@ -252,7 +250,7 @@ public class Menu {
                 break;
             case 3:
                 System.out.println("Ingrese el nombre de usuario del que quiere listar grupos ");
-                nombre = sc.nextLine();
+                String nombre = sc.nextLine();
                 grupoController.consultaGrupo(nombre);
                 accionPrincipal();
                 break;

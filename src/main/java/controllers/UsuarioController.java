@@ -50,8 +50,8 @@ public class UsuarioController {
         return usuario;
     }
 
-    public List<Usuario> consultaUsuario(String nombre) {
-        List<Usuario> usuarios = usuarioDAO.listarAutores(nombre);
+    public List<Usuario> consultaUsuario() {
+        List<Usuario> usuarios = usuarioDAO.listarAutores();
         return usuarios;
     }
 }
